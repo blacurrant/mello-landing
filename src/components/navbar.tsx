@@ -12,7 +12,7 @@ import {
 import Image from "next/image"
 import MainCardWrapper from "./MainCardWrapper"
 import Link from "next/link"
-import { SignOutButton } from "@clerk/nextjs"
+// import { SignOutButton } from "@clerk/nextjs"
 
 export const NavbarComponent = () => {
   // const [isOpen, setIsOpen] = React.useState(false);
@@ -33,7 +33,7 @@ export const NavbarComponent = () => {
           {user ? (
             <>
               <div className="ml-4 flex items-center gap-8">
-                <SignOutButton>
+                {/* <SignOutButton>
                   <Button
                     variant="ghost"
                   size="icon"
@@ -41,7 +41,7 @@ export const NavbarComponent = () => {
                 >
                     Sign out
                   </Button>
-                </SignOutButton>
+                </SignOutButton> */}
 
                 <Button>
                   Dashboard <ArrowRight className="h-4 w-4 shrink-0" />
@@ -63,14 +63,14 @@ export const NavbarComponent = () => {
               >
                 Pricing
               </Link>
-              <Link
+              {/* <Link
                 href="/sign-in"
                 className={buttonVariants({
                   variant: "ghost",
                 })}
               >
                 Sign In
-              </Link>
+              </Link> */}
               <Link
                 href="/sign-up"
                 className={buttonVariants({

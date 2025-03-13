@@ -135,7 +135,7 @@ const Page = () => {
               Intuitive Monitoring
             </h1>
             <CommonHeader className="text-center">
-              How you can leverage MelloUp for your Entire Event Marketing
+              How you can leverage MelloUp for your Entire Event Experience
               Funnel{" "}
             </CommonHeader>
           </div>
@@ -296,9 +296,8 @@ const Page = () => {
                 })}
               </div>
               <p className="text-base sm:text-lg lg:text-lg/8 font-medium tracking-tight text-brand-950 text-center lg:text-left text-pretty">
-                Ping-Panda has been a game changer for me. I&apos;ve been usin
-                it for two months now and seeing sales pop up in real time is
-                super satisfying.
+                MelloUp has been a game changer for me. I&apos;ve been using
+                it for two months now in and out of events, being able to track all my conversations and manage leads has been a game changer.
               </p>
               <div className="flex flex-col  justify-center lg:justify-start sm:flex-row items-center sm:items-center gap-4 mt-2">
                 <Image
@@ -328,8 +327,7 @@ const Page = () => {
               </div>
               <p className="text-base sm:text-lg lg:text-lg/8 font-medium tracking-tight text-brand-950 text-center lg:text-left text-pretty">
                 Everything Freya on my left said and more, it&apos;s just better
-                being on discord and getting all the important popups right
-                there.
+                being just going to someone, talk with them, and scan their event badge and boom, one less headache!
               </p>
               <div className="flex flex-col  justify-center lg:justify-start sm:flex-row items-center sm:items-center gap-4 mt-2">
                 <Image
