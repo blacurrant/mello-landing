@@ -11,68 +11,45 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        heading: ["var(--font-heading)", ...fontFamily.sans],
+        heading: ["var(--font-heading)", ...fontFamily.serif],
+        mono: ["var(--font-mono)", ...fontFamily.mono],
+        sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       colors: {
-        brand: {
-          "25": "#FBF9FC",
-          "50": "#FBF9FC",
-          "100": "#ECE6F0",
-          "200": "#ECE6F0",
-          "300": "#A9C3DE",
-          "400": "#8BAECF",
-          "500": "#6D99BF",
-          "600": "#5483A3",
-          "700": "#426A86",
-          "800": "#723D9E",
-          "900": "#723D9E",
-          "950": "#723D9E",
-        },
-background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        chart: {
-          "1": "hsl(var(--chart-1))",
-          "2": "hsl(var(--chart-2))",
-          "3": "hsl(var(--chart-3))",
-          "4": "hsl(var(--chart-4))",
-          "5": "hsl(var(--chart-5))",
-        },
+        void: "#020205",
+        "void-text": "#CCDDEE",
+        accent: "#00D1FF",
+        "accent-warm": "#FF9500",
+        "world-green": "#4AFF91",
+        "world-purple": "#BF5FFF",
+        "summit-gold": "#FFD700",
+        muted: "#1A1F2E",
+        "muted-text": "#888888",
+        "world-border": "#0D1117",
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+      animation: {
+        "sprite-walk": "sprite-walk 0.6s steps(4) infinite",
+        "float": "float 3s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        "marquee": "marquee 30s linear infinite",
+      },
+      keyframes: {
+        "sprite-walk": {
+          "0%": { backgroundPosition: "0px 0px" },
+          "100%": { backgroundPosition: "-256px 0px" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-12px)" },
+        },
+        "pulse-glow": {
+          "0%, 100%": { opacity: "0.6" },
+          "50%": { opacity: "1" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
       },
     },
   },

@@ -1,31 +1,23 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, EB_Garamond, Space_Mono } from "next/font/google"
 import { Providers } from "../components/providers"
-import { EB_Garamond } from "next/font/google"
 import { cn } from "@/lib/utils"
-
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
-const eb_garamond = EB_Garamond({
-  subsets: ["latin"],
-  variable: "--font-heading",
-})
+const eb_garamond = EB_Garamond({ subsets: ["latin"], variable: "--font-heading" })
+const space_mono = Space_Mono({ subsets: ["latin"], weight: ["400", "700"], variable: "--font-mono" })
 
 export const metadata: Metadata = {
-  title: "[PROJECT NAME]",
-  description: "[Description TBD]",
+  title: "Nishant — Frontend Developer",
+  description: "I build interfaces that feel alive.",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={cn(inter.variable, eb_garamond.variable)}>
-      <body className="font-sans bg-brand-50 text-brand-950 antialiased">
+    <html lang="en" className={cn(inter.variable, eb_garamond.variable, space_mono.variable)}>
+      <body className="antialiased">
         <Providers>{children}</Providers>
       </body>
     </html>
