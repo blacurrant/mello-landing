@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Providers } from "../components/providers"
 import { EB_Garamond } from "next/font/google"
-import { cn } from "@/utils"
+import { cn } from "@/lib/utils"
 
 import "./globals.css"
 
@@ -13,8 +13,8 @@ const eb_garamond = EB_Garamond({
 })
 
 export const metadata: Metadata = {
-  title: "mySaasProject",
-  description: "Created using jStack",
+  title: "[PROJECT NAME]",
+  description: "[Description TBD]",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 }
 
@@ -26,9 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn(inter.variable, eb_garamond.variable)}>
       <body className="font-sans bg-brand-50 text-brand-950 antialiased">
-        {/* <ClerkProvider> */}
-          <Providers>{children}</Providers>
-        {/* </ClerkProvider> */}
+        <Providers>{children}</Providers>
       </body>
     </html>
   )
