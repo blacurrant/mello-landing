@@ -3,41 +3,30 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --radius: 0.5rem;
-  }
-
   * {
     cursor: none;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
 
   body {
-    background-color: #020205;
-    color: #CCDDEE;
+    background: #060C08;
+    color: #E0F0E8;
     font-family: var(--font-sans);
     overflow-x: hidden;
   }
 }
 
 @layer utilities {
-  .glow-accent {
-    box-shadow: 0 0 20px rgba(0, 209, 255, 0.4), 0 0 60px rgba(0, 209, 255, 0.1);
+  .glow-forest {
+    text-shadow: 0 0 20px rgba(125, 207, 160, 0.6), 0 0 60px rgba(125, 207, 160, 0.2);
   }
-  .glow-text-accent {
-    text-shadow: 0 0 20px rgba(0, 209, 255, 0.6);
-  }
-  .glow-gold {
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4), 0 0 60px rgba(255, 215, 0, 0.1);
-  }
-  .noise {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: 256px 256px;
-    pointer-events: none;
+  .glow-light {
+    text-shadow: 0 0 30px rgba(200, 240, 216, 0.8);
   }
 }
