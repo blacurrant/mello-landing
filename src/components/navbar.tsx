@@ -1,90 +1,25 @@
 "use client"
-import * as React from "react"
-import { Menu, Search, Bell, User, ChevronDown, ArrowRight } from "lucide-react"
 
-import { Button, buttonVariants } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import Image from "next/image"
-import MainCardWrapper from "./MainCardWrapper"
+import { motion } from "framer-motion"
 import Link from "next/link"
-// import { SignOutButton } from "@clerk/nextjs"
 
 export const NavbarComponent = () => {
-  // const [isOpen, setIsOpen] = React.useState(false);
-
-  const user = false
-
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-sm bg-brand-200/30 ">
-      <MainCardWrapper>
-        <div className="w-full flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <span className="text-2xl font-bold text-gray-800">
-                melloUp.
-              </span>
-            </div>
-          </div>
-          {user ? (
-            <>
-              <div className="ml-4 flex items-center gap-8">
-                {/* <SignOutButton>
-                  <Button
-                    variant="ghost"
-                  size="icon"
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                    Sign out
-                  </Button>
-                </SignOutButton> */}
-
-                <Button>
-                  Dashboard <ArrowRight className="h-4 w-4 shrink-0" />
-                </Button>
-              </div>
-              {/* <div className="-mr-2 flex md:hidden">
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6 text-gray-600" />
-                </Button>
-              </div> */}
-            </>
-          ) : (
-            <div className="flex items-center gap-4">
-              <Link
-                href="/pricing"
-                className={buttonVariants({
-                  variant: "ghost",
-                })}
-              >
-                Pricing
-              </Link>
-              {/* <Link
-                href="/sign-in"
-                className={buttonVariants({
-                  variant: "ghost",
-                })}
-              >
-                Sign In
-              </Link> */}
-              <Link
-                href="/sign-up"
-                className={buttonVariants({
-                  variant: "default",
-                })}
-              >
-                Request Demo
-              </Link>
-            </div>
-          )}
-        </div>
-      </MainCardWrapper>
-
-      
-    </nav>
+    <motion.nav
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 h-14"
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 1.5, duration: 0.6 }}
+    >
+      <span className="font-mono text-accent text-lg font-bold glow-text-accent tracking-widest">
+        N.
+      </span>
+      <Link
+        href="#contact"
+        className="font-mono text-xs text-void-text/60 hover:text-accent transition-colors duration-300 tracking-widest uppercase"
+      >
+        contact
+      </Link>
+    </motion.nav>
   )
 }
