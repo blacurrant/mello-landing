@@ -1,17 +1,21 @@
 "use client"
 
-import { useMemo, useRef } from "react"
-import { useFrame } from "@react-three/fiber"
+import { useEffect, useMemo, useRef } from "react"
 import * as THREE from "three"
 
-const COUNT = 360
+const COUNT = 200
 
 export const Trees = () => {
+  console.log("[Trees] component mounted")
   const trunkRef = useRef<THREE.InstancedMesh>(null)
 
-  const dummy = useMemo(() => new THREE.Object3D(), [])
+  const dummy = useMemo(() => {
+    console.log("[Trees] creating dummy Object3D")
+    return new THREE.Object3D()
+  }, [])
 
   const treeData = useMemo(() => {
+    console.log("[Trees] generating treeData…")
     const data: { x: number; z: number; height: number; radius: number; lean: number }[] = []
     const rng = (min: number, max: number) => Math.random() * (max - min) + min
 
@@ -29,35 +33,49 @@ export const Trees = () => {
         lean: rng(-0.04, 0.04),
       })
     }
+    console.log(`[Trees] treeData ready, count=${data.length}`)
     return data
   }, [])
 
-  // set instance matrices once
-  useMemo(() => {
-    if (!trunkRef.current) return
-    treeData.forEach((t, i) => {
-      dummy.position.set(t.x, t.height / 2, t.z)
-      dummy.rotation.z = t.lean
-      dummy.scale.set(t.radius, t.height / 2, t.radius)
-      dummy.updateMatrix()
-      trunkRef.current!.setMatrixAt(i, dummy.matrix)
-    })
-    trunkRef.current.instanceMatrix.needsUpdate = true
+  // set instance matrices once after mount (useEffect so trunkRef.current is populated)
+  useEffect(() => {
+    console.log("[Trees] useEffect starting, treeData:", treeData)
+    const mesh = trunkRef.current
+    console.log("[Trees] useEffect matrix init — trunkRef.current:", mesh)
+    if (!mesh) {
+      console.warn("[Trees] useEffect matrix init skipped: ref is still null after mount!")
+      return
+    }
+    if (!treeData || !Array.isArray(treeData)) {
+      console.error("[Trees] ERROR: treeData is invalid:", treeData)
+      return
+    }
+    console.log("[Trees] setting instance matrices for", treeData.length, "trees")
+    try {
+      treeData.forEach((t, i) => {
+        if (!t) {
+          console.error(`[Trees] ERROR: tree at index ${i} is null/undefined`)
+          return
+        }
+        dummy.position.set(t.x, t.height / 2, t.z)
+        dummy.rotation.z = t.lean
+        dummy.scale.set(t.radius, t.height / 2, t.radius)
+        dummy.updateMatrix()
+        mesh.setMatrixAt(i, dummy.matrix)
+      })
+      if (!mesh.instanceMatrix) {
+        console.error("[Trees] ERROR: mesh.instanceMatrix is null after setMatrixAt calls")
+        return
+      }
+      mesh.instanceMatrix.needsUpdate = true
+      console.log("[Trees] instance matrices set ✓")
+    } catch (e) {
+      console.error("[Trees] ERROR during matrix setup:", e)
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [treeData])
 
-  // slight ambient sway
-  useFrame(({ clock }) => {
-    const t = clock.getElapsedTime()
-    treeData.forEach((tree, i) => {
-      dummy.position.set(tree.x, tree.height / 2, tree.z)
-      dummy.rotation.z = tree.lean + Math.sin(t * 0.3 + i * 0.5) * 0.008
-      dummy.scale.set(tree.radius, tree.height / 2, tree.radius)
-      dummy.updateMatrix()
-      trunkRef.current!.setMatrixAt(i, dummy.matrix)
-    })
-    trunkRef.current!.instanceMatrix.needsUpdate = true
-  })
+  // sway via shader (avoid per-frame matrix updates)
 
   return (
     <instancedMesh ref={trunkRef} args={[undefined, undefined, COUNT]} castShadow receiveShadow>

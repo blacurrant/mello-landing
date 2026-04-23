@@ -19,19 +19,19 @@ const fade = {
 
 const Hero = () => (
   <div className="flex flex-col items-center justify-center h-full gap-6 text-center px-6">
-    <p className="font-mono text-xs text-forest-accent tracking-[0.4em] uppercase">
+    <p className="font-mono text-xs text-gold-accent tracking-[0.4em] uppercase">
       you have entered the world of
     </p>
-    <h1 className="font-heading text-[clamp(4rem,14vw,10rem)] leading-none text-forest-text glow-light">
+    <h1 className="font-heading text-[clamp(4rem,14vw,10rem)] leading-none text-gold-text" style={{ textShadow: "0 0 60px rgba(212,160,23,0.4), 0 0 120px rgba(212,160,23,0.15)" }}>
       Nishant
     </h1>
-    <p className="font-mono text-sm text-forest-muted tracking-widest">
-      frontend developer · world builder
+    <p className="font-mono text-sm text-gold-muted tracking-widest">
+      frontend developer · world crafter
     </p>
-    <div className="mt-8 flex flex-col items-center gap-2 opacity-50">
-      <span className="font-mono text-[10px] text-forest-muted tracking-[0.4em] uppercase">scroll to explore</span>
+    <div className="mt-8 flex flex-col items-center gap-2 opacity-60">
+      <span className="font-mono text-[10px] text-gold-muted tracking-[0.4em] uppercase">scroll to explore</span>
       <motion.div
-        className="w-px h-10 bg-gradient-to-b from-forest-accent to-transparent"
+        className="w-px h-10 bg-gradient-to-b from-gold-accent to-transparent"
         animate={{ scaleY: [0.4, 1, 0.4] }}
         transition={{ duration: 2.2, repeat: Infinity }}
       />

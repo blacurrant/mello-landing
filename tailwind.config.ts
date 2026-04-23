@@ -15,6 +15,7 @@ const config: Config = {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       colors: {
+        // original forest palette
         void: "#060C08",
         "forest-deep": "#0A1A10",
         "forest-mid": "#1A3A28",
@@ -23,7 +24,17 @@ const config: Config = {
         "forest-text": "#E0F0E8",
         "forest-muted": "#6A9A7A",
         "forest-accent": "#7DCFA0",
-        "bark": "#1A2A1A",
+        bark: "#1A2A1A",
+
+        // Elden Ring golden order palette
+        "gold-bright": "#FFD700",
+        "gold-mid":    "#D4A017",
+        "gold-dim":    "#8B6914",
+        "gold-text":   "#F5E6B8",
+        "gold-muted":  "#A08040",
+        "gold-accent": "#C8960C",
+        "er-dark":     "#0A0704",
+        "er-blue":     "#3355BB",
       },
       animation: {
         marquee: "marquee 35s linear infinite",
